@@ -1,0 +1,86 @@
+h3 {
+  color: red;
+
+}
+#first_h3 {
+  background-color: black ;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+.border_green{
+  border-color: green;
+  border-width: 3px;
+  border-style: dashed;
+}
+#small_img{
+  width: 500px;
+  height: 200px;
+  object-fit: cover;
+
+}
+.bg-img {
+  width: 100%;
+  height: 800px;
+  background-image: url("/static/anh2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.b-red {
+  border-color: red;
+  border-width: 2px;
+  border-style: solid;
+}
+.b-t-red {
+  border: red 1px solid ;
+}
+.f-georgia{
+  font-family: "Georgia", sans-serif;
+  font-size: 3em;
+  font-weight: lighter;
+
+}
+.f-verdana {
+  font-family: "Roboto", sans-serif;
+  font-size: 10em;
+  font-weight: bold;
+}
+.w-30 {
+  width: 30%;
+}
+.h-100p {
+  height: 100px;
+
+}
+.bg-red {
+  background-color: red ;
+
+}
+.t-a-center{
+  text-align: center;
+}
+.t-a-right {
+  text-align: right;
+}
+.d-inline{
+  display: inline;
+}
+.d-inline-block{
+  display: inline-block;
+}
+.p-trbl-20p{
+  padding: 20px 0px 0px 20px ;
+}
+.m-b-10px {
+  margin-bottom: 15px;
+}
+.w-50 {
+  width: 50% ;
+}
+.img-float {
+  width: 200px ;
+  height: auto;
+  display: inline-block;
+  float: left;
+}

@@ -1,0 +1,9 @@
+.carousel{
+  width: 80%;
+  height: 300px;
+  object-fit: contain;
+  margin: auto;
+}
+.image{
+  object-fit: contain;
+}

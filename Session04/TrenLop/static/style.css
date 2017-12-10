@@ -1,96 +1,26 @@
-
-
-.head-image {
-  max-height: 40px ;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-  padding: 10px ;
-
+.image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
 }
-.table {
-  border-top: 1px #CCC solid ;
-  border-bottom: 1px #CCC solid;
-  text-align: center;
-  list-style-type: none ;
-  padding: 0px ;
-  margin: 0px ;
-  padding-top: 3px;
-}
-.table li {
-  display: inline-block;
-  width: 20% ;
-  height: 30px ;
-  margin-left: 0px ;
-  margin-right: 0px ;
-
-
-}
-.table a {
-  text-decoration: none;
-
-}
-.title {
-  padding: 0px 40px 10px 40px;
-  border-bottom: 1px #CCC solid ;
-}
-.title h3 {
-  font-size: 3em;
-}
-.title h2 {
-  font-style: italic;
+.logo {
+  font-family: 'Lobster', cursive;
   font-size: 2em;
-  font-weight: normal;
 
 }
-.para-picture{
-  display: inline-block;
-  float: right;
-}
-.para-picture p{
-  font-style: italic;
 
+.bg-dark {
+  background-color: #774b1c !important;
 }
-.para {
-  padding-top: 30px;
+.footer{
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.para blockquote {
-  padding-left: 60px;
-}
-.b-para{
-  padding-top: 60px;
-  padding-bottom: 60px;
-
-}
-.bottom {
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-.bottom a{
-  margin-left: 30px;
-  display: inline-block;
-  color: white;
-
-  background-color: black;
-}
-.most-popular h3 {
-  text-align: center;
-  border-top: 1px #CCC solid;
-  border-bottom: 1px #CCC solid;
-}
-.most-popular .mp-title {
-  font-size: 1em;
-  color: red;
-}
-.most-popular .book {
-  font-size: 14pt;
-  color: black;
-}
-.Daily-Cartoon{
-  font-size: 11pt;
-  color: red;
-}
-.Forget{
-  font-size: 14pt;
+.carousel-item img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
 }

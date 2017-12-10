@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import mlab
 from mongoengine import *
 
@@ -24,6 +24,22 @@ class Item(Document):
 def index():
     data = Item.objects()
     return render_template('index.html', items = data)
+
+@app.route('/themitem', methods=['GET', 'POST'])
+def themitem():
+    if request.method == "GET":
+        return render_template('themitem.html')
+    elif request.method == "POST" :
+        form = request.form
+        title = form['title']
+        image = form['image']
+        description = form['description']
+        price = form['price']
+        truyentranh = Item(title=title, image=image, description=description, price=price)
+        truyentranh.save()
+
+        return "ahihi"
+
 
 if __name__ == '__main__':
   app.run(debug=True)

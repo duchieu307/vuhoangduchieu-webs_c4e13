@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import mlab
 from mongoengine import *
 
@@ -15,13 +15,12 @@ class Item(Document):
     price = IntField()
 
 # 3 them items
-# tv = Item(title = "Catset Cu",
-#     image= "https://cdn1.tgdd.vn/Files/2015/09/26/708646/bi-kip-chon-mua-tivi-cu-1.jpg",
-#     description = "Re ma",
-#     price = 3000000,
-# )
-#
-# tv.save()
+new_item = Item(title = "Dep to ong",
+    image= "http://static.baophapluat.vn/Uploaded/nguyenvantung/2014_08_06/gietme-bangoai-baophapluat13_XTVD.jpg",
+    description = "Re ma",
+    price = 100000,
+)
+# new_item.save()
 #
 # items = Item.objects()
 # for item in items:
@@ -29,47 +28,27 @@ class Item(Document):
 #     print(item.price)
 
 
+
 @app.route('/')
 def index():
-    return render_template('index.html', title="TV cu",
-        image='https://cdn1.tgdd.vn/Files/2015/09/26/708646/bi-kip-chon-mua-tivi-cu-1.jpg'
+    items = Item.objects()
+    return render_template("index.html", items = items )
 
-        )
-@app.route('/list')
-def title_list():
-    return render_template('title_for.html', titles=['Tv Cu', 'Radio Cu', 'DVD Cu'])
-
-@app.route('/object')
-def object():
-    x = {
-        "title": "TV Cu Gia Cao",
-        "image": "https://cdn1.tgdd.vn/Files/2015/09/26/708646/bi-kip-chon-mua-tivi-cu-1.jpg",
-        "description": "Vi TV Cu Nen Gia Cao",
-    }
-    return render_template("object.html", item = x )
-
-@app.route('/object-list')
-def object_list():
-    # data = [
-    #     {
-    #         "title" : "Tv Cu",
-    #         "image" : "http://via.placeholder.com/200x300",
-    #         "description" : "TV Dat Vicecarlone"
-    #     },
-    #     {
-    #         "title" : "Tu Lanh Cu",
-    #         "image" : "http://via.placeholder.com/200x300",
-    #         "description" : "Tu Lanh Dat Vicecarlone"
-    #     },
-    #     {
-    #         "title" : "Den Cu",
-    #         "image" : "http://via.placeholder.com/200x300",
-    #         "description" : "Den Dat Vicecarlone"
-    #     },
-    # ]
-
-    data = Item.objects()
-    return render_template("object-list.html", items = data )
+@app.route('/add_item', methods=['GET', 'POST'])
+def add_item():
+    if request.method == "GET":
+        return render_template('add_item.html')
+    elif request.method == "POST":
+        #1 lay thong tin tu form
+        form = request.form
+        title = form['title']
+        image = form['image']
+        description = form['description']
+        price = form['price']
+        #2 them vao database
+        new_item = Item(title=title, image=image, description=description, price=price)
+        new_item.save()
+        return "Anh di ra di"
 
 if __name__ == '__main__':
   app.run(debug=True)

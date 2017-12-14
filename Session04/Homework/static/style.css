@@ -4,14 +4,18 @@
   object-fit: cover;
 }
 .logo {
-  font-family: 'Lobster', cursive;
+  font-family: 'Bungee', cursive;
   font-size: 2em;
+  color: white;
 
 }
-
-.bg-dark {
-  background-color: #774b1c !important;
+.text{
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
 }
+
+
 .footer{
   height: 80px;
   width: 100%;
@@ -22,5 +26,8 @@
 .carousel-item img {
   height: 500px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+.block{
+  display: inline-block;
 }

@@ -7,14 +7,20 @@ Xoa Item
 {% block page_content %}
 
 <body>
-  <h3>{{ item.title }}</h3>
-  <img src="{{ item.image }}" alt="">
-  <p>{{ item.description }}</p>
-  <p>{{ item.price }}</p>
+  <div class="container text-center">
+    <h1>{{ item.title }}</h1>
+    <img src="{{ item.image }}" alt="">
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }}</p>
 
-<a href="/block/{{ item.id }}">
-  <button type="button" class="btn btn-danger">Ban Chac Chan Muon Xoa Khong</button>
-</a>
+  <a href="/block/{{ item.id }}">
+    <button type="button" class="btn btn-danger">Ban Chac Chan Muon Xoa Khong</button>
+  </a>
+  <a href="http://127.0.0.1:5000/admin">
+    <button type="button" class="btn btn-primary" >Thoi Dung Xoa Nua</button>
+  </a>
+  </div>
+
 
   </body>
 

@@ -77,6 +77,7 @@ def xoaitem(item_id):
     elif request.method == "POST":
         data.delete()
         flash("Duoc roi anh oi")
+        data = Item.objects()
         return render_template('admin.html', items = data)
 
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Xoa
+{% endblock %}
+
+{% block page_content %}
+
+<body>
+<h1>BAN CO CHAC CHAN MUON XOA KHONG</h1>
+
+<form class="" method="post">
+
+  {% for message in get_flashed_messages() %}
+  <p class="text-success">{{ message }}</p>
+  {% endfor %}
+
+  <input class="form-control btn btn-danger" type="submit" value="Bo MAY CHAC ROI">
+</form>
+
+<a href="http://127.0.0.1:5000/admin">
+  <button type="button" class="btn btn-primary">Da Thoi A</button>
+
+
+</a>
+
+
+  </body>
+{% endblock %}

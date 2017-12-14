@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Xoa Item
+{% endblock %}
+
+{% block page_content %}
+
+<body>
+  <h3>{{ item.title }}</h3>
+  <img src="{{ item.image }}" alt="">
+  <p>{{ item.description }}</p>
+  <p>{{ item.price }}</p>
+
+<a href="/block/{{ item.id }}">
+  <button type="button" class="btn btn-danger">Ban Chac Chan Muon Xoa Khong</button>
+</a>
+
+  </body>
+
+{% endblock %}

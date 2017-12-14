@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin
+{% endblock %}
+
+{% block page_content %}
+
+<body>
+    <h1>Hello Hello</h1>
+    <table class="table">
+      <thead>
+        <th>Title</th>
+        <th>Mo ta</th>
+        <th>Link anh</th>
+        <th>Gia tien</th>
+        <th></th>
+
+      </thead>
+
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <!-- row  -->
+
+          <td>{{ item.title }}</td>
+          <td> {{ item.description }}</td>
+          <td> <a href="{{ item.image }}">link</a> </td>
+          <td> {{ item.price }}</td>
+          <td>
+            <a href="/edit_item/{{ item.id }}">
+              <i class="fa fa-pencil text-dark" aria-hidden="true"></i>
+            </a>
+            <a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </body>
+
+
+{% endblock %}

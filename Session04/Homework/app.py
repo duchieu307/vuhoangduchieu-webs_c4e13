@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import mlab
 from mongoengine import *
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "duchieu307"
 
 mlab.connect()
 
@@ -39,6 +40,46 @@ def themitem():
         truyentranh.save()
 
         return "ahihi"
+
+@app.route("/admin")
+def admin():
+    data = Item.objects()
+    return render_template('admin.html', items = data)
+
+@app.route("/suaitem/<item_id>", methods = ["GET", "POST"])
+def edit(item_id):
+    data = Item.objects().with_id(item_id)
+    if request.method == "GET":
+        return render_template("suaitem.html", item=data )
+    elif request.method == "POST":
+        form = request.form
+        title = form['title']
+        description = form['description']
+        image = form['image']
+        price = form['price']
+
+        data.update(title=title, description=description, image=image, price=price)
+
+        flash("Duoc roi anh oi")
+
+        return render_template('suaitem.html', item=Item.objects().with_id(item_id))
+
+@app.route("/xoaitem/<item_id>", methods =[ "GET", "POST"] )
+def xoa(item_id):
+    data = Item.objects().with_id(item_id)
+    return render_template("xoaitem.html", item=data )
+
+@app.route("/block/<item_id>", methods =[ "GET", "POST"] )
+def xoaitem(item_id):
+    data = Item.objects().with_id(item_id)
+    if request.method == "GET":
+        return render_template("xoa.html", item=data )
+    elif request.method == "POST":
+        data.delete()
+        flash("Duoc roi anh oi")
+        return render_template('admin.html', items = data)
+
+
 
 
 if __name__ == '__main__':

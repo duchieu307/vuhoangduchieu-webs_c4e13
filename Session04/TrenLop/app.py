@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import *
 import mlab
 from mongoengine import *
 
@@ -14,6 +14,12 @@ class Item(Document):
     image = StringField()
     description = StringField()
     price = IntField()
+
+class User(Document):
+    username = StringField()
+    password = StringField()
+
+user = User(username="thao", password = "thaoadmin")
 
 # 3 them items
 new_item = Item(title = "Dep to ong",
@@ -33,7 +39,8 @@ new_item = Item(title = "Dep to ong",
 @app.route('/')
 def index():
     items = Item.objects()
-    return render_template("index.html", items = items )
+    loggedin = session.get("loggedin", False)
+    return render_template("index.html", items = items, loggedin = loggedin )
 
 @app.route('/add_item', methods=['GET', 'POST'])
 def add_item():
@@ -53,8 +60,11 @@ def add_item():
 
 @app.route('/admin')
 def admin():
-    items = Item.objects()
-    return render_template('admin.html', items = items)
+    if session.get('loggedin', False)  :
+        items = Item.objects()
+        return render_template('admin.html', items = items)
+    else :
+        return redirect(url_for('login'))
 
 @app.route("/edit_item/<item_id>", methods = ['GET', 'POST'])
 def edit_item(item_id):
@@ -74,6 +84,28 @@ def edit_item(item_id):
         flash("Hello Hello")
 
         return render_template('edit_item.html', item=Item.objects().with_id(item_id))
+
+@app.route("/login", methods = ["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        form = request.form
+        username = form["username"]
+        password = form["password"]
+        user  = User.objects(username=username).first()
+        if user is None :
+            return "Username khong ton tai"
+        elif user.password != password :
+            return "Sai mat khau"
+        else :
+            session['loggedin'] = True
+            return redirect("/admin")
+
+@app.route("/logout")
+def logout():
+    session["loggedin"] = False
+    return redirect(url_for('login'))
 
 
 

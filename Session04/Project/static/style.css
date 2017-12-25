@@ -34,3 +34,13 @@ body, html{
   margin-right: 10px;
 
 }
+.person-bar{
+  width: 75% !important;
+}
+.map{
+  width: 450px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

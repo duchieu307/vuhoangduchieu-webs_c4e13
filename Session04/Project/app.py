@@ -18,5 +18,9 @@ def ketqua():
 def dangky():
     return render_template("register.html")
 
+@app.route('/trangchu')
+def trangchu():
+    return render_template("map.html")
+
 if __name__ == '__main__':
   app.run(debug=True)
